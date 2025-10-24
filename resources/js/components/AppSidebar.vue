@@ -21,7 +21,7 @@ import {
 import NavMain from '@/components/NavMain.vue'
 import NavProjects from '@/components/NavProjects.vue'
 import NavUser from '@/components/NavUser.vue'
-import TeamSwitcher from '@/components/TeamSwitcher.vue'
+import ModuleSwitcher from '@/components/ModuleSwitcher.vue'
 
 import {
   Sidebar,
@@ -156,7 +156,7 @@ const data = {
 <template>
   <Sidebar v-bind="props">
     <SidebarHeader>
-      <TeamSwitcher :teams="data.teams" />
+      <ModuleSwitcher />
     </SidebarHeader>
     <SidebarContent>
       <ScrollArea>

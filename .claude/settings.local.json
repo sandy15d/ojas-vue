@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(vendor/bin/pint:*)",
-      "Bash(php artisan test:*)"
+      "Bash(php artisan test:*)",
+      "Bash(composer require:*)",
+      "Bash(php artisan:*)",
+      "Bash(curl:*)",
+      "Read(//c/Users/Sandeep/Downloads/**)",
+      "Bash(php test_modules.php:*)",
+      "Bash(del:*)"
     ],
     "deny": [],
     "ask": []

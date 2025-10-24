@@ -5,6 +5,20 @@ export interface Auth {
     user: User;
 }
 
+export interface Module {
+    name: string;
+    identifier: string;
+    icon: string;
+    dashboardRoute: string;
+    menuItems: MenuItem[];
+}
+
+export interface MenuItem {
+    title: string;
+    url: string;
+    permission?: string;
+}
+
 export interface BreadcrumbItem {
     title: string;
     href: string;
@@ -24,6 +38,7 @@ export type AppPageProps<
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    modules?: Module[];
 };
 
 export interface User {
