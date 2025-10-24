@@ -47,23 +47,92 @@ class BudgetModule extends Module
         return [
             [
                 'title' => 'Dashboard',
-                'url' => '/budget/dashboard',
-                'permission' => 'view-budget',
+                'url' => '#',
+                'icon' => 'LayoutGrid',
+                'items' => [
+                    [
+                        'title' => 'Overview',
+                        'url' => '/budget/dashboard',
+                        'permission' => 'view-budget',
+                    ],
+                ],
             ],
             [
                 'title' => 'Budget Plans',
-                'url' => '/budget/plans',
-                'permission' => 'view-budget',
+                'url' => '#',
+                'icon' => 'FileText',
+                'items' => [
+                    [
+                        'title' => 'All Plans',
+                        'url' => '/budget/plans',
+                        'permission' => 'view-budget',
+                    ],
+                    [
+                        'title' => 'Create Plan',
+                        'url' => '/budget/plans/create',
+                        'permission' => 'create-budget',
+                    ],
+                    [
+                        'title' => 'Active Plans',
+                        'url' => '/budget/plans/active',
+                        'permission' => 'view-budget',
+                    ],
+                ],
             ],
             [
                 'title' => 'Expenses',
-                'url' => '/budget/expenses',
-                'permission' => 'view-budget',
+                'url' => '#',
+                'icon' => 'CreditCard',
+                'items' => [
+                    [
+                        'title' => 'All Expenses',
+                        'url' => '/budget/expenses',
+                        'permission' => 'view-budget',
+                    ],
+                    [
+                        'title' => 'Add Expense',
+                        'url' => '/budget/expenses/create',
+                        'permission' => 'create-budget',
+                    ],
+                    [
+                        'title' => 'Categories',
+                        'url' => '/budget/expenses/categories',
+                        'permission' => 'view-budget',
+                    ],
+                ],
             ],
             [
                 'title' => 'Forecasts',
-                'url' => '/budget/forecasts',
-                'permission' => 'view-budget',
+                'url' => '#',
+                'icon' => 'TrendingUp',
+                'items' => [
+                    [
+                        'title' => 'Financial Forecast',
+                        'url' => '/budget/forecasts',
+                        'permission' => 'view-budget',
+                    ],
+                    [
+                        'title' => 'Variance Analysis',
+                        'url' => '/budget/variance',
+                        'permission' => 'view-budget',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function getProjects(): array
+    {
+        return [
+            [
+                'name' => 'Annual Planning',
+                'url' => '/budget/annual-planning',
+                'icon' => 'CalendarDays',
+            ],
+            [
+                'name' => 'Cost Optimization',
+                'url' => '/budget/optimization',
+                'icon' => 'Zap',
             ],
         ];
     }

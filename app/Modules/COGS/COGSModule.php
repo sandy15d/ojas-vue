@@ -47,23 +47,87 @@ class COGSModule extends Module
         return [
             [
                 'title' => 'Dashboard',
-                'url' => '/cogs/dashboard',
-                'permission' => 'view-cogs',
+                'url' => '#',
+                'icon' => 'LayoutGrid',
+                'items' => [
+                    [
+                        'title' => 'Overview',
+                        'url' => '/cogs/dashboard',
+                        'permission' => 'view-cogs',
+                    ],
+                ],
             ],
             [
                 'title' => 'Inventory',
-                'url' => '/cogs/inventory',
-                'permission' => 'view-cogs',
+                'url' => '#',
+                'icon' => 'Package',
+                'items' => [
+                    [
+                        'title' => 'All Items',
+                        'url' => '/cogs/inventory',
+                        'permission' => 'view-cogs',
+                    ],
+                    [
+                        'title' => 'Add Item',
+                        'url' => '/cogs/inventory/create',
+                        'permission' => 'create-cogs',
+                    ],
+                    [
+                        'title' => 'Stock Levels',
+                        'url' => '/cogs/inventory/stock',
+                        'permission' => 'view-cogs',
+                    ],
+                ],
             ],
             [
                 'title' => 'Suppliers',
-                'url' => '/cogs/suppliers',
-                'permission' => 'view-cogs',
+                'url' => '#',
+                'icon' => 'Truck',
+                'items' => [
+                    [
+                        'title' => 'All Suppliers',
+                        'url' => '/cogs/suppliers',
+                        'permission' => 'view-cogs',
+                    ],
+                    [
+                        'title' => 'Add Supplier',
+                        'url' => '/cogs/suppliers/create',
+                        'permission' => 'create-cogs',
+                    ],
+                ],
             ],
             [
                 'title' => 'Analysis',
-                'url' => '/cogs/analysis',
-                'permission' => 'view-cogs',
+                'url' => '#',
+                'icon' => 'BarChart',
+                'items' => [
+                    [
+                        'title' => 'Cost Analysis',
+                        'url' => '/cogs/analysis',
+                        'permission' => 'view-cogs',
+                    ],
+                    [
+                        'title' => 'Trends',
+                        'url' => '/cogs/trends',
+                        'permission' => 'view-cogs',
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    public function getProjects(): array
+    {
+        return [
+            [
+                'name' => 'Cost Reduction',
+                'url' => '/cogs/cost-reduction',
+                'icon' => 'TrendingDown',
+            ],
+            [
+                'name' => 'Quality Control',
+                'url' => '/cogs/quality',
+                'icon' => 'Award',
             ],
         ];
     }

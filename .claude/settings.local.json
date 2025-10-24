@@ -8,7 +8,14 @@
       "Bash(curl:*)",
       "Read(//c/Users/Sandeep/Downloads/**)",
       "Bash(php test_modules.php:*)",
-      "Bash(del:*)"
+      "Bash(del:*)",
+      "Bash(npx shadcn-vue@latest add:*)",
+      "Bash(printf:*)",
+      "WebSearch",
+      "WebFetch(domain:www.shadcn-vue.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

@@ -36,15 +36,30 @@ class AppServiceProvider extends ServiceProvider
                             'icon' => $module->getIcon(),
                             'dashboardRoute' => $module->getDashboardRoute(),
                             'menuItems' => collect($module->getMenuItems())
-                                ->filter(function ($item) use ($user) {
-                                    if (! isset($item['permission'])) {
-                                        return true;
+                                ->map(function ($item) use ($user) {
+                                    // Filter sub-items based on permissions
+                                    if (isset($item['items'])) {
+                                        $item['items'] = collect($item['items'])
+                                            ->filter(function ($subItem) use ($user) {
+                                                if (! isset($subItem['permission'])) {
+                                                    return true;
+                                                }
+
+                                                return $user->can($subItem['permission']);
+                                            })
+                                            ->values()
+                                            ->toArray();
                                     }
 
-                                    return $user->can($item['permission']);
+                                    return $item;
+                                })
+                                ->filter(function ($item) {
+                                    // Remove menu items that have no sub-items after filtering
+                                    return ! isset($item['items']) || count($item['items']) > 0;
                                 })
                                 ->values()
                                 ->toArray(),
+                            'projects' => $module->getProjects(),
                         ];
                     })->filter()->values()->toArray();
                 } catch (\Exception $e) {

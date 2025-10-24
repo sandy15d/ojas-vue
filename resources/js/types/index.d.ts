@@ -10,13 +10,27 @@ export interface Module {
     identifier: string;
     icon: string;
     dashboardRoute: string;
-    menuItems: MenuItem[];
+    menuItems: MenuSection[];
+    projects: ProjectItem[];
+}
+
+export interface MenuSection {
+    title: string;
+    url: string;
+    icon?: string;
+    items?: MenuItem[];
 }
 
 export interface MenuItem {
     title: string;
     url: string;
     permission?: string;
+}
+
+export interface ProjectItem {
+    name: string;
+    url: string;
+    icon: string;
 }
 
 export interface BreadcrumbItem {
