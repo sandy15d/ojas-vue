@@ -21,7 +21,7 @@ import {
 import NavMain from '@/components/NavMain.vue'
 import NavProjects from '@/components/NavProjects.vue'
 import NavUser from '@/components/NavUser.vue'
-import ModuleSwitcher from '@/components/ModuleSwitcher.vue'
+import AppLogo from '@/components/AppLogo.vue'
 
 import {
   Sidebar,
@@ -29,6 +29,9 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
 } from '@/components/ui/sidebar'
 import { usePage } from '@inertiajs/vue3'
 import { computed } from 'vue'
@@ -156,7 +159,13 @@ const data = {
 <template>
   <Sidebar v-bind="props">
     <SidebarHeader>
-      <ModuleSwitcher />
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton size="lg" class="pointer-events-none">
+            <AppLogo />
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
     </SidebarHeader>
     <SidebarContent>
       <ScrollArea>

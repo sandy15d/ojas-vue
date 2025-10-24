@@ -9,6 +9,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import UserMenuContent from '@/components/UserMenuContent.vue';
+import ModuleSwitcher from '@/components/ModuleSwitcher.vue';
 import { getInitials } from '@/composables/useInitials';
 import type { BreadcrumbItemType } from '@/types';
 import { usePage } from '@inertiajs/vue3';
@@ -38,7 +39,8 @@ const auth = computed(() => page.props.auth);
             </template>
         </div>
 
-        <div class="ml-auto flex items-center">
+        <div class="ml-auto flex items-center gap-2">
+            <ModuleSwitcher />
             <DropdownMenu>
                 <DropdownMenuTrigger :as-child="true">
                     <Button
