@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('has_sales_access')->default(false)->after('email_verified_at');
+            $table->boolean('has_admin_access')->default(false)->after('email_verified_at');
+            $table->boolean('has_sales_access')->default(false)->after('has_admin_access');
             $table->boolean('has_hr_access')->default(false)->after('has_sales_access');
             $table->boolean('has_cogs_access')->default(false)->after('has_hr_access');
             $table->boolean('has_budget_access')->default(false)->after('has_cogs_access');
@@ -27,6 +28,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn([
+                'has_admin_access',
                 'has_sales_access',
                 'has_hr_access',
                 'has_cogs_access',

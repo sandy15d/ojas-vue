@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'has_admin_access',
         'has_sales_access',
         'has_hr_access',
         'has_cogs_access',
@@ -53,6 +54,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
+            'has_admin_access' => 'boolean',
             'has_sales_access' => 'boolean',
             'has_hr_access' => 'boolean',
             'has_cogs_access' => 'boolean',
@@ -64,6 +66,7 @@ class User extends Authenticatable
     {
         return match ($moduleIdentifier) {
             'sales' => $this->has_sales_access,
+            'admin' => $this->has_admin_access,
             'hr' => $this->has_hr_access,
             'cogs' => $this->has_cogs_access,
             'budget' => $this->has_budget_access,
@@ -75,6 +78,9 @@ class User extends Authenticatable
     {
         $modules = [];
 
+        if ($this->has_admin_access) {
+            $modules[] = 'admin';
+        }
         if ($this->has_sales_access) {
             $modules[] = 'sales';
         }

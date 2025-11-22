@@ -22,6 +22,17 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $modules = ['admin', 'sales', 'hr', 'cogs', 'budget'];
+        $hasModuleAccess = fake()->boolean(70); // 70% chance of having at least one module
+
+        if ($hasModuleAccess) {
+            $randomModules = fake()->randomElements($modules, fake()->numberBetween(1, count($modules)));
+            $defaultModule = fake()->randomElement($randomModules);
+        } else {
+            $randomModules = [];
+            $defaultModule = null;
+        }
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
@@ -31,6 +42,12 @@ class UserFactory extends Factory
             'two_factor_secret' => Str::random(10),
             'two_factor_recovery_codes' => Str::random(10),
             'two_factor_confirmed_at' => now(),
+            'has_admin_access' => in_array('admin', $randomModules),
+            'has_sales_access' => in_array('sales', $randomModules),
+            'has_hr_access' => in_array('hr', $randomModules),
+            'has_cogs_access' => in_array('cogs', $randomModules),
+            'has_budget_access' => in_array('budget', $randomModules),
+            'default_module' => $defaultModule,
         ];
     }
 

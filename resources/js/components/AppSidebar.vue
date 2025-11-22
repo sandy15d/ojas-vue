@@ -41,6 +41,7 @@ const getIcon = (iconName: string) => {
 const getCurrentModuleFromUrl = () => {
   const url = window.location.pathname
   if (url.includes('/sales')) return 'sales'
+  if (url.includes('/admin')) return 'admin'
   if (url.includes('/hr')) return 'hr'
   if (url.includes('/cogs')) return 'cogs'
   if (url.includes('/budget')) return 'budget'
@@ -64,7 +65,7 @@ const navMain = computed(() => {
   }))
 
   // Add Settings section for all modules
-  const settingsMenu = {
+/*   const settingsMenu = {
     title: "Settings",
     url: edit().url,
     icon: Settings2,
@@ -82,9 +83,9 @@ const navMain = computed(() => {
         url: "#",
       },
     ],
-  }
+  } */
 
-  return [...moduleMenus, settingsMenu]
+  return [...moduleMenus, /* settingsMenu */]
 })
 
 // Convert module projects to NavProjects format

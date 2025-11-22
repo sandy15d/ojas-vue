@@ -24,6 +24,7 @@ const modules = computed<Module[]>(() => (page.props.modules as Module[]) || [])
 
 const getCurrentModuleFromUrl = () => {
     const url = window.location.pathname;
+    if (url.includes('/admin')) return 'admin';
     if (url.includes('/sales')) return 'sales';
     if (url.includes('/hr')) return 'hr';
     if (url.includes('/cogs')) return 'cogs';
@@ -68,15 +69,15 @@ const getIcon = (iconName: string) => {
             <DropdownMenu>
                 <DropdownMenuTrigger as-child>
                     <SidebarMenuButton
-                        size="lg"
+                        size="md"
                         class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                     >
                         <div
-                            class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                            class="flex aspect-square size-6 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
                         >
                             <component
                                 :is="getIcon(activeModule?.icon)"
-                                class="size-4"
+                                class="size-3"
                             />
                         </div>
                         <div class="grid flex-1 text-left text-sm leading-tight">
